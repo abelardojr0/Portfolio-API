@@ -30,7 +30,7 @@ try:
       return jsonify(results)
     
   @app.route('/imagens/perfil', methods=['GET'])
-  def obter_dados():
+  def imagem_perfil():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'perfil'")
       results = cur.fetchall()
