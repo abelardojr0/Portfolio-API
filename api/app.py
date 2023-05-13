@@ -28,7 +28,14 @@ try:
       cur.execute("SELECT * FROM projetos")
       results = cur.fetchall()
       return jsonify(results)
-    
+
+  @app.route('/imagens/projetos', methods=['GET'])
+  def imagem_projetos():
+      cur = con.cursor()
+      cur.execute("SELECT * FROM imagens WHERE tipo = 'projeto'")
+      results = cur.fetchall()
+      return jsonify(results)
+       
   @app.route('/imagens/perfil', methods=['GET'])
   def imagem_perfil():
       cur = con.cursor()
@@ -42,8 +49,23 @@ try:
       cur.execute("SELECT * FROM imagens WHERE tipo = 'adereco' AND titulo LIKE '%divisoria%'")
       results = cur.fetchall()
       return jsonify(results)    
-    
-    
+
+  @app.route('/imagens/adereco-desktop', methods=['GET'])
+  def imagem_adereco_desktop():
+      cur = con.cursor()
+      cur.execute("SELECT * FROM imagens WHERE tipo = 'adereco' AND (titulo LIKE '%dia%' OR titulo LIKE '%noite%') AND NOT (titulo LIKE 'perfil%' OR titulo LIKE 'divisoria%')")
+      results = cur.fetchall()
+      return jsonify(results)     
+
+  @app.route('/imagens/tecnologias', methods=['GET'])
+  def imagem_tecnologia():
+      cur = con.cursor()
+      cur.execute("SELECT * FROM imagens WHERE tipo = 'tec'")
+      results = cur.fetchall()
+      return jsonify(results)
+
+
+        
   if __name__ == '__main__':
         app.run(debug=True)
     
