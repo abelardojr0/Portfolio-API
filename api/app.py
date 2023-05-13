@@ -35,6 +35,14 @@ try:
       cur.execute("SELECT * FROM imagens WHERE tipo = 'perfil'")
       results = cur.fetchall()
       return jsonify(results)
+
+  @app.route('/imagens/divisoria', methods=['GET'])
+  def imagem_divisoria():
+      cur = con.cursor()
+      cur.execute("SELECT * FROM imagens WHERE tipo = 'adereco' AND titulo LIKE '%divisoria%'")
+      results = cur.fetchall()
+      return jsonify(results)    
+    
     
   if __name__ == '__main__':
         app.run(debug=True)
