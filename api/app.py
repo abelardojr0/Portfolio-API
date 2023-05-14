@@ -74,7 +74,7 @@ try:
   @app.route('/informacoes/curso', methods=['GET'])
   def infos_curso():
       cur = con.cursor()
-      cur.execute("SELECT * FROM informacoes WHERE tipo = 'curso'")
+      cur.execute("SELECT * FROM informacoes WHERE tipo = 'curso' ORDER BY id ASC")
       results = cur.fetchall()
       return jsonify(results)
 
