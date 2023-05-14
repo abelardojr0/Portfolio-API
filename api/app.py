@@ -64,6 +64,13 @@ try:
       results = cur.fetchall()
       return jsonify(results)
     
+  @app.route('/imagens/detalhes', methods=['GET'])
+  def imagem_detalhes():
+      cur = con.cursor()
+      cur.execute("SELECT * FROM imagens WHERE tipo = 'detalhe'")
+      results = cur.fetchall()
+      return jsonify(results)   
+    
   @app.route('/informacoes/experiencia', methods=['GET'])
   def infos_experiencia():
       cur = con.cursor()
