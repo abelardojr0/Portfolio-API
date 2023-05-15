@@ -71,19 +71,19 @@ try:
       results = cur.fetchall()
       return jsonify(results)   
     
-  @app.route('/informacoes/experiencia', methods=['GET'])
-  def infos_experiencia():
-      cur = con.cursor()
-      cur.execute("SELECT * FROM informacoes WHERE tipo = 'experiencia'")
-      results = cur.fetchall()
-      return jsonify(results)
+  # @app.route('/informacoes/experiencia', methods=['GET'])
+  # def infos_experiencia():
+  #     cur = con.cursor()
+  #     cur.execute("SELECT * FROM informacoes WHERE tipo = 'experiencia'")
+  #     results = cur.fetchall()
+  #     return jsonify(results)
 
-  @app.route('/informacoes/curso', methods=['GET'])
-  def infos_curso():
-      cur = con.cursor()
-      cur.execute("SELECT * FROM informacoes WHERE tipo = 'curso' ORDER BY id ASC")
-      results = cur.fetchall()
-      return jsonify(results)
+  # @app.route('/informacoes/curso', methods=['GET'])
+  # def infos_curso():
+  #     cur = con.cursor()
+  #     cur.execute("SELECT * FROM informacoes WHERE tipo = 'curso' ORDER BY id ASC")
+  #     results = cur.fetchall()
+  #     return jsonify(results)
 
         
   if __name__ == '__main__':
