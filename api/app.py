@@ -29,56 +29,59 @@ try:
       results = cur.fetchall()
       return jsonify(results)
 
-  @app.route('/imagens/projetos', methods=['GET'])
-  def imagem_projetos():
-      cur = con.cursor()
-      cur.execute("SELECT * FROM imagens WHERE tipo = 'projeto'")
-      results = cur.fetchall()
-      return jsonify(results)
        
-  @app.route('/imagens/perfil', methods=['GET'])
+  @app.route('/perfil', methods=['GET'])
   def imagem_perfil():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'perfil'")
       results = cur.fetchall()
       return jsonify(results)
 
-  @app.route('/imagens/divisoria', methods=['GET'])
+  @app.route('/divisoria', methods=['GET'])
   def imagem_divisoria():
       cur = con.cursor()
-      cur.execute("SELECT * FROM imagens WHERE tipo = 'adereco' AND titulo LIKE '%divisoria%'")
+      cur.execute("SELECT * FROM imagens WHERE tipo = 'divisoria'")
       results = cur.fetchall()
       return jsonify(results)    
 
-  @app.route('/imagens/adereco-desktop', methods=['GET'])
+
+  @app.route('/header', methods=['GET'])
   def imagem_adereco_desktop():
       cur = con.cursor()
-      cur.execute("SELECT * FROM imagens WHERE tipo = 'adereco' AND (titulo LIKE '%dia%' OR titulo LIKE '%noite%') AND NOT (titulo LIKE 'perfil%' OR titulo LIKE 'divisoria%')")
+      cur.execute("SELECT * FROM imagens WHERE tipo = 'header'")
+      results = cur.fetchall()
+      return jsonify(results)   
+  
+
+  @app.route('/corpo', methods=['GET'])
+  def imagem_adereco_desktop():
+      cur = con.cursor()
+      cur.execute("SELECT * FROM imagens WHERE tipo = 'corpo'")
       results = cur.fetchall()
       return jsonify(results)     
 
-  @app.route('/imagens/tecnologias', methods=['GET'])
+  @app.route('/tec', methods=['GET'])
   def imagem_tecnologia():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'tec'")
       results = cur.fetchall()
       return jsonify(results)
     
-  @app.route('/imagens/detalhes', methods=['GET'])
+  @app.route('/detalhes', methods=['GET'])
   def imagem_detalhes():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'detalhe'")
       results = cur.fetchall()
       return jsonify(results)   
     
-  @app.route('/informacoes/experiencia', methods=['GET'])
+  @app.route('/experiencia', methods=['GET'])
   def infos_experiencia():
       cur = con.cursor()
-      cur.execute("SELECT * FROM informacoes WHERE tipo = 'experiencia'")
+      cur.execute("SELECT * FROM informacoes WHERE tipo = 'experiencia' ORDER BY id ASC")
       results = cur.fetchall()
       return jsonify(results)
 
-  @app.route('/informacoes/curso', methods=['GET'])
+  @app.route('/curso', methods=['GET'])
   def infos_curso():
       cur = con.cursor()
       cur.execute("SELECT * FROM informacoes WHERE tipo = 'curso' ORDER BY id ASC")
