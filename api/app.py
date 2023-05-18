@@ -23,7 +23,7 @@ try:
     return "API está no AR"
   
   @app.route('/projetos', methods=['GET'])
-  def obter_dados():
+  def projetos():
       cur = con.cursor()
       cur.execute("SELECT * FROM projetos")
       results = cur.fetchall()
@@ -31,14 +31,14 @@ try:
 
        
   @app.route('/perfil', methods=['GET'])
-  def imagem_perfil():
+  def perfil():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'perfil'")
       results = cur.fetchall()
       return jsonify(results)
 
   @app.route('/divisoria', methods=['GET'])
-  def imagem_divisoria():
+  def divisoria():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'divisoria'")
       results = cur.fetchall()
@@ -46,43 +46,42 @@ try:
 
 
   @app.route('/header', methods=['GET'])
-  def imagem_adereco_desktop():
+  def header():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'header'")
       results = cur.fetchall()
       return jsonify(results)   
   
-
   @app.route('/corpo', methods=['GET'])
-  def imagem_adereco_desktop():
+  def corpo():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'corpo'")
       results = cur.fetchall()
       return jsonify(results)     
 
   @app.route('/tec', methods=['GET'])
-  def imagem_tecnologia():
+  def tec():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'tec'")
       results = cur.fetchall()
       return jsonify(results)
     
   @app.route('/detalhes', methods=['GET'])
-  def imagem_detalhes():
+  def detalhes():
       cur = con.cursor()
       cur.execute("SELECT * FROM imagens WHERE tipo = 'detalhe'")
       results = cur.fetchall()
       return jsonify(results)   
     
   @app.route('/experiencia', methods=['GET'])
-  def infos_experiencia():
+  def experiencia():
       cur = con.cursor()
       cur.execute("SELECT * FROM informacoes WHERE tipo = 'experiencia' ORDER BY id ASC")
       results = cur.fetchall()
       return jsonify(results)
 
   @app.route('/curso', methods=['GET'])
-  def infos_curso():
+  def curso():
       cur = con.cursor()
       cur.execute("SELECT * FROM informacoes WHERE tipo = 'curso' ORDER BY id ASC")
       results = cur.fetchall()
